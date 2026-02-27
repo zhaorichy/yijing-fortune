@@ -1,4 +1,5 @@
 import { Gua, GuaResult } from './types';
+import { calculateBazi } from './bazi';
 
 // 64卦数据
 const guaData: Gua[] = [
@@ -84,11 +85,14 @@ export function calculateGua(name: string, birthDate: string, birthTime: string,
   const month = date.getMonth() + 1;
   const day = date.getDate();
   
+  // 解析出生时间
+  const hour = parseInt(birthTime.split(':')[0]);
+  const minute = parseInt(birthTime.split(':')[1]) || 0;
+  
   // 根据姓名计算一个种子值
   const nameSeed = name.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
   
   // 根据出生时间计算时辰
-  const hour = parseInt(birthTime.split(':')[0]);
   const shichen = Math.floor((hour + 1) / 2) % 12;
   
   // 计算主卦（基于年月日时）- 如果提供了农历日期，优先使用农历
@@ -118,6 +122,9 @@ export function calculateGua(name: string, birthDate: string, birthTime: string,
   // 生成运势分析
   const fortune = generateFortune(mainGua, changeGua, huGua, name);
   
+  // 计算八字排盘
+  const baziResult = calculateBazi(year, month, day, hour, minute, false, lunarDate?.year, lunarDate?.month, lunarDate?.day, lunarDate?.isLeap);
+  
   return {
     mainGua,
     changeGua,
@@ -129,6 +136,7 @@ export function calculateGua(name: string, birthDate: string, birthTime: string,
       dizhi: dizhi[dizhiIndex],
       wuxing: wuxing[wuxingIndex],
     },
+    bazi: baziResult,
   };
 }
 

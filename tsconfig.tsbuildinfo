@@ -1,1 +1,1 @@
-{"root":["./src/App.tsx","./src/lunar.ts","./src/main.tsx","./src/types.ts","./src/yijing.ts","./src/components/FortuneAnalysis.tsx","./src/components/GuaDisplay.tsx","./src/components/LunarDatePicker.tsx"],"version":"5.9.3"}
+{"root":["./src/App.tsx","./src/bazi.ts","./src/lunar.ts","./src/main.tsx","./src/types.ts","./src/yijing.ts","./src/components/BaziDisplay.tsx","./src/components/FortuneAnalysis.tsx","./src/components/GuaDisplay.tsx","./src/components/LunarDatePicker.tsx"],"version":"5.9.3"}
