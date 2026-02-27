@@ -518,6 +518,24 @@ ${userName}，您的五行属${elements.wuxing}，得${mainGua.name}卦，整体
       ) : (
         /* Results Display */
         <div className="animate-fade-in space-y-8">
+          {/* 用户信息显示 */}
+          <div className="glass rounded-xl p-6 text-center animate-fade-in">
+            <h3 className="text-xl font-bold text-gold mb-4">求测者信息</h3>
+            <div className="flex justify-center gap-8 flex-wrap">
+              <div className="text-center">
+                <p className="text-gray-400 text-sm mb-1">姓名</p>
+                <p className="text-xl font-bold text-amber-400">{name}</p>
+              </div>
+              <div className="text-center">
+                <p className="text-gray-400 text-sm mb-1">农历生辰</p>
+                <p className="text-xl font-bold text-amber-400">
+                  {lunarDate?.year}年{lunarDate?.isLeap ? '闰' : ''}{lunarDate?.month ? ['正','二','三','四','五','六','七','八','九','十','冬','腊'][lunarDate.month - 1] : ''}月{lunarDate?.day ? ['初一','初二','初三','初四','初五','初六','初七','初八','初九','初十','十一','十二','十三','十四','十五','十六','十七','十八','十九','二十','廿一','廿二','廿三','廿四','廿五','廿六','廿七','廿八','廿九','三十'][lunarDate.day - 1] : ''}
+                </p>
+                <p className="text-gray-400 text-sm mt-1">公历：{lunarDate?.solarDate}</p>
+              </div>
+            </div>
+          </div>
+          
           <GuaDisplay result={result} />
           
           {/* AI深度解读 */}
