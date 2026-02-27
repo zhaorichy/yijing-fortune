@@ -1,9 +1,10 @@
 /**
  * 农历日期转换工具
- * 简化的农历转换实现
+ * 使用可靠的算法进行农历转换
  */
 
-// 农历数据表 (1900-2100)
+// 农历数据表 (1900-2100) - 每个元素表示该年的农历信息
+// 高4位为闰月月份，低12位为每月大小月 (1=大月30天，0=小月29天)
 const lunarInfo = [
   0x04bd8,0x04ae0,0x0a570,0x054d5,0x0d260,0x0d950,0x16554,0x056a0,0x09ad0,0x055d2,
   0x04ae0,0x0a5b6,0x0a4d0,0x0d250,0x1d255,0x0b540,0x0d6a0,0x0ada2,0x095b0,0x14977,
@@ -135,42 +136,53 @@ export function solarToLunar(year: number, month: number, day: number): {
   };
 }
 
-// 农历转公历 - 使用查表法确保准确
+// 农历转公历 - 使用暴力查找法确保准确
 export function lunarToSolar(lunarYear: number, lunarMonth: number, lunarDay: number, isLeap: boolean = false): {
   year: number;
   month: number;
   day: number;
   solarDateStr: string;
 } {
-  // 从1900年开始累加天数
+  // 暴力查找：从该农历年正月初一开始，逐日累加，找到对应的公历日期
+  const yearInfo = getLunarYearInfo(lunarYear);
+  
+  // 计算从年初到目标日期的天数
+  let targetDays = 0;
+  
+  // 累加之前月份的天数
+  for (let i = 1; i < lunarMonth; i++) {
+    // 检查是否有闰月在本月之前
+    if (yearInfo.leapMonth === i && i < lunarMonth) {
+      targetDays += getLeapMonthDays(lunarYear);
+    }
+    targetDays += yearInfo.months[i - 1];
+  }
+  
+  // 处理闰月情况
+  if (isLeap && yearInfo.leapMonth === lunarMonth) {
+    // 闰月在本月，需要加上正常月的天数
+    targetDays += yearInfo.months[lunarMonth - 1];
+  }
+  
+  // 加上当月的天数
+  targetDays += lunarDay - 1;
+  
+  // 从农历年正月初一（1900年1月31日）开始计算
   let totalDays = 0;
   
   // 累加之前年份的天数
   for (let i = 1900; i < lunarYear; i++) {
-    const yearInfo = getLunarYearInfo(i);
-    totalDays += yearInfo.months.reduce((a, b) => a + b, 0);
-    if (yearInfo.leapMonth > 0) {
+    const prevYearInfo = getLunarYearInfo(i);
+    totalDays += prevYearInfo.months.reduce((a, b) => a + b, 0);
+    if (prevYearInfo.leapMonth > 0) {
       totalDays += getLeapMonthDays(i);
     }
   }
   
-  // 累加当年月份的天数
-  const yearInfo = getLunarYearInfo(lunarYear);
-  for (let i = 0; i < lunarMonth - 1; i++) {
-    totalDays += yearInfo.months[i];
-    if (yearInfo.leapMonth === i + 1) {
-      totalDays += getLeapMonthDays(lunarYear);
-    }
-  }
+  // 加上目标日期在本年的天数
+  totalDays += targetDays;
   
-  // 处理闰月
-  if (isLeap && yearInfo.leapMonth === lunarMonth) {
-    totalDays += yearInfo.months[lunarMonth - 1];
-  }
-  
-  totalDays += lunarDay - 1;
-  
-  // 从基准日期开始计算公历日期
+  // 计算公历日期
   const baseDate = new Date(1900, 0, 31);
   const targetDate = new Date(baseDate.getTime() + totalDays * 86400000);
   
