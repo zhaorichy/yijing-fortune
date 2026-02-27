@@ -259,15 +259,17 @@ export function calculateBazi(
   // 年柱以立春为界
   const liChun = getLiChunDate(year);
   let yearGanIndex: number;
+  let yearZhiIndex: number;
   
   if (month < liChun.month || (month === liChun.month && day < liChun.day)) {
     // 还没过立春，属于上一年
     yearGanIndex = (year - 1 - 4) % 10;
+    yearZhiIndex = (year - 1 - 4) % 12;
   } else {
     yearGanIndex = (year - 4) % 10;
+    yearZhiIndex = (year - 4) % 12;
   }
   
-  const yearZhiIndex = (year - 4) % 12;
   const yearGan = TIAN_GAN[(yearGanIndex + 10) % 10];
   const yearZhi = DI_ZHI[(yearZhiIndex + 12) % 12];
   
