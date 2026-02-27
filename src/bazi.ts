@@ -332,8 +332,13 @@ export function calculateBazi(
     hour: NA_YIN_WUXING[hourPillar.gan + hourPillar.zhi] || ''
   };
   
-  // 生肖
-  const shengXiao = SHENG_XIAO[(yearZhiIndex + 12) % 12];
+  // 生肖 - 直接使用年支对应生肖
+  const zhiToAnimal: Record<string, string> = {
+    '子': '鼠', '丑': '牛', '寅': '虎', '卯': '兔',
+    '辰': '龙', '巳': '蛇', '午': '马', '未': '羊',
+    '申': '猴', '酉': '鸡', '戌': '狗', '亥': '猪'
+  };
+  const shengXiao = zhiToAnimal[yearZhi] || SHENG_XIAO[0];
   
   return {
     yearPillar: { gan: yearGan, zhi: yearZhi, ganZhi: yearGan + yearZhi },
