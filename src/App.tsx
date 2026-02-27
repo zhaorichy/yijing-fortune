@@ -145,10 +145,11 @@ function App() {
         if (data.choices && data.choices[0] && data.choices[0].message) {
           setAiInterpretation(data.choices[0].message.content);
         } else {
-          setAiInterpretation('AI解读生成失败，请重试。');
+          setAiInterpretation('AI解读生成失败：' + JSON.stringify(data));
         }
       } else {
-        setAiInterpretation('AI服务暂时不可用，请稍后重试。');
+        const errorText = await response.text();
+        setAiInterpretation('AI服务错误：' + response.status + ' ' + errorText);
       }
     } catch (error) {
       console.error('AI解读失败:', error);
