@@ -124,3 +124,104 @@ body {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+/* Lunar Date Picker Styles */
+.lunar-date-picker {
+  width: 100%;
+}
+
+.lunar-picker-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+.lunar-picker-item {
+  flex: 1;
+  min-width: 0;
+}
+
+.lunar-picker-label {
+  display: block;
+  color: #d4af37;
+  font-size: 0.75rem;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.lunar-picker-select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: white;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23d4af37' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 30px;
+}
+
+.lunar-picker-select:hover {
+  border-color: rgba(212, 175, 55, 0.6);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.lunar-picker-select:focus {
+  outline: none;
+  border-color: #d4af37;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+}
+
+.lunar-picker-select option {
+  background: #1a1a2e;
+  color: white;
+  padding: 8px;
+}
+
+/* Prose styles for AI interpretation */
+.prose {
+  max-width: 65ch;
+}
+
+.prose h3 {
+  color: #d4af37;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose p {
+  margin-bottom: 1rem;
+  line-height: 1.8;
+}
+
+.prose strong {
+  color: #f4d03f;
+  font-weight: 600;
+}
+
+.prose-invert {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .lunar-picker-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .lunar-picker-item {
+    width: 100%;
+  }
+  
+  #root {
+    padding: 1rem;
+  }
+}

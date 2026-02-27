@@ -78,7 +78,7 @@ const dizhi = ['子', '丑', '寅', '卯', '辰', '巳', '午', '未', '申', '�
 const wuxing = ['金', '木', '水', '火', '土'];
 
 // 根据出生日期计算卦象
-export function calculateGua(name: string, birthDate: string, birthTime: string): GuaResult {
+export function calculateGua(name: string, birthDate: string, birthTime: string, lunarDate?: { year: number; month: number; day: number; isLeap: boolean }): GuaResult {
   const date = new Date(birthDate);
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
@@ -91,8 +91,13 @@ export function calculateGua(name: string, birthDate: string, birthTime: string)
   const hour = parseInt(birthTime.split(':')[0]);
   const shichen = Math.floor((hour + 1) / 2) % 12;
   
-  // 计算主卦（基于年月日时）
-  const mainGuaIndex = ((year + month + day + shichen + nameSeed) % 64);
+  // 计算主卦（基于年月日时）- 如果提供了农历日期，优先使用农历
+  let mainGuaIndex: number;
+  if (lunarDate) {
+    mainGuaIndex = ((lunarDate.year + lunarDate.month + lunarDate.day + shichen + nameSeed) % 64);
+  } else {
+    mainGuaIndex = ((year + month + day + shichen + nameSeed) % 64);
+  }
   const mainGua = guaData[mainGuaIndex];
   
   // 计算变卦（基于主卦变化）
