@@ -185,7 +185,17 @@ body {
 
 /* Prose styles for AI interpretation */
 .prose {
-  max-width: 65ch;
+  max-width: none;
+}
+
+.prose h2 {
+  color: #f4d03f;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid rgba(212, 175, 55, 0.3);
 }
 
 .prose h3 {
@@ -196,9 +206,18 @@ body {
   margin-bottom: 0.75rem;
 }
 
+.prose h4 {
+  color: #e5c100;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
 .prose p {
   margin-bottom: 1rem;
   line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .prose strong {
@@ -206,8 +225,138 @@ body {
   font-weight: 600;
 }
 
+.prose em {
+  color: #d4af37;
+  font-style: italic;
+}
+
+.prose blockquote {
+  background: rgba(212, 175, 55, 0.1);
+  border-left: 4px solid #d4af37;
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.prose blockquote p {
+  margin-bottom: 0;
+  color: rgba(255, 255, 255, 0.85);
+  font-style: italic;
+}
+
+.prose ul, .prose ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.prose li::marker {
+  color: #d4af37;
+}
+
+.prose hr {
+  border: none;
+  border-top: 1px solid rgba(212, 175, 55, 0.3);
+  margin: 2rem 0;
+}
+
+.prose code {
+  background: rgba(212, 175, 55, 0.15);
+  color: #f4d03f;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.9em;
+}
+
+.prose pre {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.prose pre code {
+  background: none;
+  padding: 0;
+}
+
 .prose-invert {
   color: rgba(255, 255, 255, 0.9);
+}
+
+/* AI Interpretation specific styles */
+.ai-interpretation {
+  font-size: 1rem;
+  line-height: 1.9;
+}
+
+.ai-interpretation .section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.ai-interpretation .highlight-box {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(244, 208, 63, 0.05) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.ai-interpretation .quote-classic {
+  font-family: 'Noto Serif SC', serif;
+  color: #f4d03f;
+  font-size: 1.1rem;
+  text-align: center;
+  padding: 1rem;
+  margin: 1rem 0;
+  background: rgba(212, 175, 55, 0.08);
+  border-radius: 8px;
+}
+
+/* Loading animation enhancement */
+.ai-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+}
+
+.ai-loading-spinner {
+  width: 60px;
+  height: 60px;
+  border: 3px solid rgba(212, 175, 55, 0.2);
+  border-top-color: #d4af37;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.ai-loading-text {
+  margin-top: 1.5rem;
+  color: #d4af37;
+  font-size: 1.1rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
 }
 
 /* Responsive adjustments */
