@@ -121,7 +121,7 @@ function App() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer sk-yijifortune'
+          'Authorization': 'Bearer sk-kimi-ZGAJ3whrEG8GjKtJZW6BCeT2NaKSLldlVGmckIPAbNc2LtbSlCfWElyaYswTYAO2'
         },
         body: JSON.stringify({
           model: 'moonshot-v1-8k',
