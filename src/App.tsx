@@ -554,7 +554,7 @@ ${userName}，您的五行属${elements.wuxing}，得${mainGua.name}卦，整体
                         .replace(/• (.*)/g, '<li>$1</li>')
                         .replace(/- (.*)/g, '<li>$1</li>')
                         .replace(/\n\n/g, '</p><p>')
-                        .replace(/"/g, '<span style="color:#f4d03f;font-style:italic;">"$1"</span>')
+                        .replace(/"([^"]*)"/g, '<span style="color:#f4d03f;font-style:italic;">"$1"</span>')
                     }}
                   />
                 </div>
