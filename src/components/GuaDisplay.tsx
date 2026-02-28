@@ -6,7 +6,7 @@ interface GuaDisplayProps {
 }
 
 const GuaDisplay: React.FC<GuaDisplayProps> = ({ result }) => {
-  const { mainGua, changeGua, huGua, elements } = result;
+  const { mainGua, changeGua, huGua } = result;
 
   // 渲染爻线
   const renderYao = (isYang: boolean, index: number) => {
@@ -23,24 +23,6 @@ const GuaDisplay: React.FC<GuaDisplayProps> = ({ result }) => {
 
   return (
     <div className="space-y-8">
-      {/* 八字信息 */}
-      <div className="glass rounded-xl p-6 text-center animate-fade-in">
-        <div className="flex justify-center gap-8 flex-wrap">
-          <div className="text-center">
-            <p className="text-gray-400 text-sm mb-1">天干</p>
-            <p className="text-2xl font-bold text-amber-400">{elements.tiangan}</p>
-          </div>
-          <div className="text-center">
-            <p className="text-gray-400 text-sm mb-1">地支</p>
-            <p className="text-2xl font-bold text-amber-400">{elements.dizhi}</p>
-          </div>
-          <div className="text-center">
-            <p className="text-gray-400 text-sm mb-1">五行</p>
-            <p className="text-2xl font-bold text-amber-400">{elements.wuxing}</p>
-          </div>
-        </div>
-      </div>
-
       {/* 主卦 */}
       <div className="glass rounded-xl p-8 animate-fade-in">
         <div className="text-center mb-6">
