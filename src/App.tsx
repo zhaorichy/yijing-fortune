@@ -197,10 +197,10 @@ function App() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer sk-kimi-WH9bxUx5E6aip6ftwHf0PLdA2kZhXVGBf5uvxAixNmo4bqhYdvAvwK3kgPagjty1'
+          'Authorization': 'Bearer sk-sZieuIuda4n2HaE86Y3FsgQaO3ul7WHx3WaKAEISOsAPffuq'
         },
         body: JSON.stringify({
-          model: 'moonshot-v1-8k',
+          model: 'kimi-k2-5',
           messages: [
             {
               role: 'system',
