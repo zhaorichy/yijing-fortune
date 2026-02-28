@@ -24,7 +24,7 @@ function App() {
 
     setIsCalculating(true);
     setAiInterpretation(null);
-    
+
     setTimeout(async () => {
       const guaResult = calculateGua(name, lunarDate.solarDate, birthTime, {
         year: lunarDate.year,
@@ -34,7 +34,7 @@ function App() {
       });
       setResult(guaResult);
       setIsCalculating(false);
-      
+
       await fetchAIInterpretation(guaResult, name, lunarDate);
     }, 1500);
   };
@@ -243,9 +243,9 @@ function App() {
               </div>
             </div>
           </div>
-          
+
           <GuaDisplay result={result} />
-          
+
           {(isLoadingAI || aiInterpretation) && (
             <div className="glass rounded-xl p-8 animate-fade-in">
               <div className="flex items-center gap-3 mb-6">
@@ -257,7 +257,7 @@ function App() {
                   <p className="text-gray-400 text-sm">基于易经与八字的智能分析</p>
                 </div>
               </div>
-              
+
               {isLoadingAI ? (
                 <div className="ai-loading">
                   <div className="ai-loading-spinner"></div>
@@ -266,13 +266,14 @@ function App() {
                 </div>
               ) : aiInterpretation ? (
                 <div className="prose prose-invert ai-interpretation">
-                  <div 
+                  <div
                     className="text-gray-200 leading-relaxed"
-                    dangerouslySetInnerHTML={{ 
+                    dangerouslySetInnerHTML={{
                       __html: aiInterpretation
                         .replace(/## (.*)/g, '<h2>$1</h2>')
                         .replace(/### (.*)/g, '<h3>$1</h3>')
                         .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                        .replace(/(\d+)\.\s+/g, '<br/>$1. ')
                         .replace(/\n\n/g, '</p><p>')
                     }}
                   />
