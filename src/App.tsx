@@ -229,7 +229,7 @@ function App() {
       }
     } catch (error) {
       console.error('AI解读失败:', error);
-      setAiInterpretation('网络错误，请检查连接后重试。');
+      setAiInterpretation('网络错误：浏览器安全策略限制直接访问API。建议：1) 使用本地运行版本 2) 或部署到支持Serverless Functions的平台（如Vercel/Netlify）');
     } finally {
       setIsLoadingAI(false);
     }
