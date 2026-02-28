@@ -3,9 +3,7 @@ import './index.css';
 import { GuaResult } from './types';
 import { calculateGua } from './yijing';
 import GuaDisplay from './components/GuaDisplay';
-import FortuneAnalysis from './components/FortuneAnalysis';
 import LunarDatePicker from './components/LunarDatePicker';
-import BaziDisplay from './components/BaziDisplay';
 
 function App() {
   const [name, setName] = useState('');
@@ -248,8 +246,6 @@ function App() {
           
           <GuaDisplay result={result} />
           
-          {result.bazi && <BaziDisplay bazi={result.bazi} />}
-          
           {(isLoadingAI || aiInterpretation) && (
             <div className="glass rounded-xl p-8 animate-fade-in">
               <div className="flex items-center gap-3 mb-6">
@@ -257,7 +253,7 @@ function App() {
                   <span className="text-2xl">🤖</span>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-gold">AI大师深度解读</h3>
+                  <h3 className="text-2xl font-bold text-gold">大师深度解读</h3>
                   <p className="text-gray-400 text-sm">基于易经与八字的智能分析</p>
                 </div>
               </div>
@@ -265,7 +261,7 @@ function App() {
               {isLoadingAI ? (
                 <div className="ai-loading">
                   <div className="ai-loading-spinner"></div>
-                  <p className="ai-loading-text">AI大师正在为您深度解读...</p>
+                  <p className="ai-loading-text">大师正在测算中...</p>
                   <p className="text-gray-500 text-sm mt-2">正在计算八字排盘、分析卦象...</p>
                 </div>
               ) : aiInterpretation ? (
@@ -284,9 +280,7 @@ function App() {
               ) : null}
             </div>
           )}
-          
-          <FortuneAnalysis result={result} />
-          
+
           <div className="text-center">
             <button
               onClick={resetForm}
