@@ -211,7 +211,6 @@ function App() {
               content: prompt
             }
           ],
-          temperature: 0.7,
           max_tokens: 3000
         })
       });
