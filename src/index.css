@@ -359,6 +359,28 @@ body {
   50% { opacity: 1; }
 }
 
+/* Fortune tube shaking animation */
+.fortune-tube-shake {
+  font-size: 60px;
+  animation: shake 0.8s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: rotate(-10deg);
+  }
+  25% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(-8deg);
+  }
+  75% {
+    transform: rotate(8deg);
+  }
+}
+
 /* Responsive adjustments */
 @media (max-width: 640px) {
   .lunar-picker-row {
