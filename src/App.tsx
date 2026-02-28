@@ -193,14 +193,14 @@ function App() {
 5. 语气要专业但不失亲切，像一位资深命理大师
 6. 字数2000-3500字，内容要充实`;
 
-      const response = await fetch('https://api.moonshot.cn/v1/chat/completions', {
+      const response = await fetch('https://api.kimi.com/coding/v1/chat/completions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer sk-5urvjUy4SMNusnnxLaFbxtu3LQMisLvEEsGJgPL8wfnzWAaL'
+          'Authorization': 'Bearer sk-kimi-WH9bxUx5E6aip6ftwHf0PLdA2kZhXVGBf5uvxAixNmo4bqhYdvAvwK3kgPagjty1'
         },
         body: JSON.stringify({
-          model: 'moonshot-v1-8k',
+          model: 'k2p5',
           messages: [
             {
               role: 'system',
