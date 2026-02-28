@@ -200,7 +200,7 @@ function App() {
           'Authorization': 'Bearer sk-sZieuIuda4n2HaE86Y3FsgQaO3ul7WHx3WaKAEISOsAPffuq'
         },
         body: JSON.stringify({
-          model: 'kimi-k2.5',
+          model: 'moonshot-v1-8k',
           messages: [
             {
               role: 'system',
